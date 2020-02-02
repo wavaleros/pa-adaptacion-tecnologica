@@ -77,8 +77,8 @@ DATABASES = {
     'default': {
         'ENGINE':
             'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbgallery',
-        'USER': 'usdbgallery',
+        'NAME': 'olympics',
+        'USER': 'olympics_us',
         'PASSWORD': 'Abcd123#',
         'HOST': 'localhost',
         'PORT': '5432',

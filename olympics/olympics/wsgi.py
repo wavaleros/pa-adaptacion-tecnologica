@@ -1,5 +1,5 @@
 """
-WSGI config for tokio2020 project.
+WSGI config for olympics project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tokio2020.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'olympics.settings')
 
 application = get_wsgi_application()

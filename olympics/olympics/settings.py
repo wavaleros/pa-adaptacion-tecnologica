@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,12 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*63a1grme#(s(8+ep&kt$##n9($2f2gq0io0$wop%$)qg6@_m$'
+# SECRET_KEY = '*63a1grme#(s(8+ep&kt$##n9($2f2gq0io0$wop%$)qg6@_m$'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com']
 
 # Application definition
 
@@ -72,16 +75,20 @@ WSGI_APPLICATION = 'olympics.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE':
-            'django.db.backends.postgresql_psycopg2',
-        'NAME': 'olympics',
-        'USER': 'olympics_us',
-        'PASSWORD': 'Abcd123#',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )}
+# DATABASES = {
+#     'default': {
+#         'ENGINE':
+#             'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'olympics',
+#         'USER': 'olympics_us',
+#         'PASSWORD': 'Abcd123#',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -118,3 +125,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

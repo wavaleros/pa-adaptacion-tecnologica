@@ -1,1 +1,1 @@
-web: gunicorn tokio2020.wsgi — log-file -
+web: gunicorn olympics\tokio2020.wsgi — log-file -

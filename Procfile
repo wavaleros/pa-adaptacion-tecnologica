@@ -1,1 +1,2 @@
-web: gunicorn olympics/tokio2020.wsgi — log-file -
+release: python manage.py migrate
+web: gunicorn olympics.wsgi — log-file -

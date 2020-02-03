@@ -1,3 +1,5 @@
 .idea/
 olympics/tokio2020/__pycache__/
 olympics/tokio2020/migrations/__pycache__/
+olympics/olympics/__pycache__/
+venv/

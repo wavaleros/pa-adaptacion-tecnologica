@@ -1,2 +1,2 @@
-release: python manage.py migrate
-web: gunicorn olympics.wsgi — log-file -
+release: python olympics/manage.py migrate
+web: gunicorn olympics/olympics/wsgi.py — log-file -
